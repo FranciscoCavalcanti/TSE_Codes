@@ -59,7 +59,6 @@ label variable n_mayor_candidates "number of of mayoral candidates"
 
 * clean data
 rename SIGLA_UE cod_tse
-rename year year_of_election
 
 **************************************
 **	Collapse at municipality level 	**
@@ -74,7 +73,7 @@ foreach v of var `var_mean' `var_sum' {
 }
 
 * colapse
-collapse (mean)`var_mean' (sum) `var_sum', by(cod_tse year_of_election)
+collapse (mean)`var_mean' (sum) `var_sum', by(cod_tse year)
 
 // copy back the label of variables
 foreach v of var `var_mean' `var_sum' {

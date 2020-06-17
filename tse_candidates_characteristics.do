@@ -18,8 +18,9 @@ else if "`c(username)'" == "f.cavalcanti"   {
 }
 
 global datadir  "${ROOT}/data_sources/TSE/6_tse/input"
+global codedir	"${ROOT}/data_sources/TSE/code_tse"
+
 global dataout  "${ROOT}/drought_corruption/build/6_tse/output"
-global codedir	"${ROOT}/drought_corruption/build/6_tse/code"
 global tmp     "${ROOT}/drought_corruption/build/6_tse/tmp"
 
 
@@ -35,7 +36,7 @@ cd  "${tmp}"
 use "${datadir}/1996/Candidatos_1996.dta", clear
 
 * clean data
-do "$codedir/_tse_1996_candidate_characteristics.do"
+do "$codedir/_sub_do_files/_tse_1996_candidate_characteristics.do"
 
 * save as temporary file
 save "$tmp/tse_1996_candidate_characteristics.dta", replace
@@ -60,7 +61,7 @@ save "$tmp/2000_candidate_characteristics_`uf'.dta", replace
 * clean data
 foreach uf in AC AL AM AP BA CE ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO {
 	use "$tmp/2000_candidate_characteristics_`uf'", clear
-	do "$codedir/_tse_2000_candidate_characteristics.do"
+	do "$codedir/_sub_do_files/_tse_2000_candidate_characteristics.do"
 	* save as temporary file
 	save "$tmp/2000_candidate_characteristics_`uf'.dta", replace
 }
@@ -94,7 +95,7 @@ save "$tmp/2004_candidate_characteristics_`uf'.dta", replace
 * clean data
 foreach uf in AC AL AM AP BA CE ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO {
 	use "$tmp/2004_candidate_characteristics_`uf'", clear
-	do "$codedir/_tse_2004_candidate_characteristics.do"
+	do "$codedir/_sub_do_files/_tse_2004_candidate_characteristics.do"
 	* save as temporary file
 	save "$tmp/2004_candidate_characteristics_`uf'.dta", replace
 }
@@ -129,7 +130,7 @@ save "$tmp/2008_candidate_characteristics_`uf'.dta", replace
 * clean data
 foreach uf in AC AL AM AP BA CE ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO {
 	use "$tmp/2008_candidate_characteristics_`uf'", clear
-	do "$codedir/_tse_2008_candidate_characteristics.do"
+	do "$codedir/_sub_do_files/_tse_2008_candidate_characteristics.do"
 	* save as temporary file
 	save "$tmp/2008_candidate_characteristics_`uf'.dta", replace
 }
@@ -163,7 +164,7 @@ save "$tmp/2012_candidate_characteristics_`uf'.dta", replace
 * clean data
 foreach uf in AC AL AM AP BA CE ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO {
 	use "$tmp/2012_candidate_characteristics_`uf'", clear
-	do "$codedir/_tse_2012_candidate_characteristics.do"
+	do "$codedir/_sub_do_files/_tse_2012_candidate_characteristics.do"
 	* save as temporary file
 	save "$tmp/2012_candidate_characteristics_`uf'.dta", replace
 }
@@ -197,7 +198,7 @@ save "$tmp/2016_candidate_characteristics_`uf'.dta", replace
 * clean data
 foreach uf in AC AL AM AP BA CE ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO {
 	use "$tmp/2016_candidate_characteristics_`uf'", clear
-	do "$codedir/_tse_2016_candidate_characteristics.do"
+	do "$codedir/_sub_do_files/_tse_2016_candidate_characteristics.do"
 	* save as temporary file
 	save "$tmp/2016_candidate_characteristics_`uf'.dta", replace
 }
