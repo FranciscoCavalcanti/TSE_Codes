@@ -125,7 +125,7 @@ cap drop tool1
 
 * generate variable depicting the number of mayoral candidates
 gen n_mayor_candidates  =1 if CODIGO_CARGO== 11 // Prefeito
-label variable n_mayor_candidates "number of of mayoral candidates"
+label variable n_mayor_candidates "number of mayoral candidates"
 
 * clean data
 rename SIGLA_UE cod_tse
