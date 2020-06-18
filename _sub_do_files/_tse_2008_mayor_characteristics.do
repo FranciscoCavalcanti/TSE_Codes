@@ -1,45 +1,90 @@
-rename v1	DATA_GERACAO
-rename v2	HORA_GERACAO
-rename v3	ANO_ELEICAO
-rename v4	NUM_TURNO
-rename v5	DESCRICAO_ELEICAO
-rename v6	SIGLA_UF
-rename v7	SIGLA_UE
-rename v8	DESCRICAO_UE
-rename v9	CODIGO_CARGO
-rename v10	DESCRICAO_CARGO
-rename v11	NOME_CANDIDATO
-rename v12	SEQUENCIAL_CANDIDATO
-rename v13	NUMERO_CANDIDATO
-rename v14	NOME_URNA_CANDIDATO
-rename v15	COD_SITUACAO_CANDIDATURA
-rename v16	DES_SITUACAO_CANDIDATURA
-rename v17	NUMERO_PARTIDO
-rename v18	SIGLA_PARTIDO
-rename v19	NOME_PARTIDO
-rename v20	CODIGO_LEGENDA
-rename v21	SIGLA_LEGENDA
-rename v22	COMPOSICAO_LEGENDA
-rename v23	NOME_LEGENDA
-rename v24	CODIGO_OCUPACAO
-rename v25	DESCRICAO_OCUPACAO
-rename v26	DATA_NASCIMENTO
-rename v27	NUM_TITULO_ELEITORAL_CANDIDATO
-rename v28	IDADE_DATA_ELEICAO
-rename v29	CODIGO_SEXO
-rename v30	DESCRICAO_SEXO
-rename v31	COD_DESCRICAO_GRAU_INSTRUCAO
-rename v32	DESCRICAO_GRAU_INSTRUCAO
-rename v33	CODIGO_ESTADO_CIVIL
-rename v34	DESCRICAO_ESTADO_CIVIL
-rename v35	CODIGO_NACIONALIDADE
-rename v36	DESCRICAO_NACIONALIDADE
-rename v37	SIGLA_UF_NASCIMENTO
-rename v38	CODIGO_MUNICIPIO_NASCIMENTO
-rename v39	NOME_MUNICIPIO_NASCIMENTO
-rename v40	DESPESA_MAX_CAMPANHA
-rename v41	COD_SIT_TOT_TURNO
-rename v42	DESC_SIT_TOT_TURNO
+rename	v1	DATA_GERACAO 
+rename	v2	HORA_GERACAO 
+rename	v3	ANO_ELEICAO 
+rename	v4	NUM_TURNO // variáveis que podem ser utilizadas para relacionar os arquivos uns com os outros
+rename	v5	DESCRICAO_ELEICAO // variáveis que podem ser utilizadas para relacionar os arquivos uns com os outros
+rename	v6	SIGLA_UF 
+rename	v7	SIGLA_UE // variáveis que podem ser utilizadas para relacionar os arquivos uns com os outros
+rename	v8	DESCRICAO_UE 
+rename	v9	CODIGO_CARGO // variáveis que podem ser utilizadas para relacionar os arquivos uns com os outros
+rename	v10	DESCRICAO_CARGO 
+rename	v11	NOME_CANDIDATO 
+rename	v12	SEQUENCIAL_CANDIDATO // variáveis que podem ser utilizadas para relacionar os arquivos uns com os outros
+rename	v13	NUMERO_CANDIDATO 
+rename	v14	NOME_URNA_CANDIDATO 
+rename	v15	COD_SITUACAO_CANDIDATURA 
+rename	v16	DES_SITUACAO_CANDIDATURA 
+rename	v17	NUMERO_PARTIDO 
+rename	v18	SIGLA_PARTIDO 
+rename	v19	NOME_PARTIDO 
+rename	v20	CODIGO_LEGENDA 
+rename	v21	SIGLA_LEGENDA 
+rename	v22	COMPOSICAO_LEGENDA 
+rename	v23	NOME_LEGENDA 
+rename	v24	CODIGO_OCUPACAO 
+rename	v25	DESCRICAO_OCUPACAO 
+rename	v26	DATA_NASCIMENTO 
+rename	v27	NUM_TITULO_ELEITORAL_CANDIDATO
+rename	v28	IDADE_DATA_ELEICAO 
+rename	v29	CODIGO_SEXO 
+rename	v30	DESCRICAO_SEXO 
+rename	v31	COD_GRAU_INSTRUCAO 
+rename	v32	DESCRICAO_GRAU_INSTRUCAO 
+rename	v33	CODIGO_ESTADO_CIVIL 
+rename	v34	DESCRICAO_ESTADO_CIVIL 
+rename	v35	CODIGO_NACIONALIDADE 
+rename	v36	DESCRICAO_NACIONALIDADE 
+rename	v37	SIGLA_UF_NASCIMENTO 
+rename	v38	CODIGO_MUNICIPIO_NASCIMENTO 
+rename	v39	NOME_MUNICIPIO_NASCIMENTO 
+rename	v40	DESPESA_MAX_CAMPANHA 
+rename	v41	COD_SIT_TOT_TURNO 
+rename	v42	DESC_SIT_TOT_TURNO 
+ 
+
+label variable	DATA_GERACAO "Data de geração do arquivo (data da extração)	"
+label variable	HORA_GERACAO "Hora de geração do arquivo (hora da extração) - Horário de Brasília"
+label variable	ANO_ELEICAO "Ano da eleição	"
+label variable	NUM_TURNO	"Número do turno	"
+label variable	DESCRICAO_ELEICAO	"Descrição da eleição	"
+label variable	SIGLA_UF "Sigla da Unidade da Federação em que ocorreu a eleição	"
+label variable	SIGLA_UE	"Sigla da Unidade Eleitoral"
+label variable	DESCRICAO_UE "Descrição da Unidade Eleitoral	"
+label variable	CODIGO_CARGO	"Código do cargo a que o candidato concorre	"
+label variable	DESCRICAO_CARGO "Descrição do cargo a que o candidato concorre	"
+label variable	NOME_CANDIDATO "Nome completo do candidato	"
+label variable	SEQUENCIAL_CANDIDATO	"Número sequencial do candidato"
+label variable	NUMERO_CANDIDATO "Número do candidato na urna	"
+*label variable	CPF_CANDIDATO "Número do CPF do Candidato	"
+label variable	NOME_URNA_CANDIDATO "Nome de urna do candidato	"
+label variable	COD_SITUACAO_CANDIDATURA "Código da situação de candidatura	"
+label variable	DES_SITUACAO_CANDIDATURA "Descrição da situação de candidatura	"
+label variable	NUMERO_PARTIDO "Número do partido	"
+label variable	SIGLA_PARTIDO "Sigla do partido	"
+label variable	NOME_PARTIDO "Nome do partido	"
+label variable	CODIGO_LEGENDA "Código sequencial da legenda gerado pela Justiça Eleitoral	"
+label variable	SIGLA_LEGENDA "Sigla da legenda	"
+label variable	COMPOSICAO_LEGENDA "Composição da legenda	"
+label variable	NOME_LEGENDA "Nome da legenda	"
+label variable	CODIGO_OCUPACAO "Código da ocupação do candidato	"
+label variable	DESCRICAO_OCUPACAO "Descrição da ocupação do candidato	"
+label variable	DATA_NASCIMENTO "Data de nascimento do candidato	"
+label variable	NUM_TITULO_ELEITORAL_CANDIDATO "Número do Título eleitoral do candidato	"
+label variable	IDADE_DATA_ELEICAO "Idade do candidato da data da eleição	"
+label variable	CODIGO_SEXO "Código do sexo do candidato	"
+label variable	DESCRICAO_SEXO "Descrição do sexo do candidato	"
+label variable	COD_GRAU_INSTRUCAO "Código do grau de instrução do candidato. Gerado internamente pelos sistemas eleitorais"
+label variable	COD_GRAU_INSTRUCAO "Descrição do grau de instrução do candidato	"
+label variable	CODIGO_ESTADO_CIVIL "Código do estado civil do candidato	"
+label variable	DESCRICAO_ESTADO_CIVIL "Descrição do estado civil do candidato	"
+label variable	CODIGO_NACIONALIDADE "Código da nacionalidade do candidato	"
+label variable	DESCRICAO_NACIONALIDADE "Descrição da nacionalidade do candidato	"
+label variable	SIGLA_UF_NASCIMENTO "Sigla da UF de nascimento do candidato	"
+label variable	CODIGO_MUNICIPIO_NASCIMENTO "Código TSE do município da nascimento do candidato	"
+label variable	NOME_MUNICIPIO_NASCIMENTO "Nome do município de nascimento do candidato	"
+label variable	DESPESA_MAX_CAMPANHA "Despesa máxima de campanha declarada pelo partido para aquele cargo. Valores em Reais."
+label variable	COD_SIT_TOT_TURNO "Código da situação de totalização do candidato naquele turno	"
+label variable	DESC_SIT_TOT_TURNO 	"Descrição da situação de totalização do candidato naquele turno"
 
 * generate variables
 

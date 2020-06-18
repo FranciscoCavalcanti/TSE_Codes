@@ -4,7 +4,6 @@
 ----------------------------------------------------------------------------- */
 
 // caminhos (check your username by typing "di c(username)" in Stata) ----
-{
 if "`c(username)'" == "Francisco"   {
     global ROOT "C:/Users/Francisco/Dropbox"
 }
@@ -15,7 +14,6 @@ global InpDir     "${ROOT}/data_sources/TSE/6_tse/input"
 global OutDir     "${ROOT}/data_sources/TSE/6_tse/output"
 global CodeDir    "${ROOT}/data_sources/TSE/6_tse/code"
 global tmp        "${ROOT}/data_sources/TSE/6_tse/tmp"
-}
 
 // IN, OUT & CONSTANTES -------------------------------------------------
 

@@ -1,7 +1,5 @@
 /*
-
 D0 VOTOCAO_CANDIDATO 1996
-
 */
 rename	SGL_UF	SIGLA_UF	
 rename	COD_MUN	SIGLA_UE	
@@ -14,16 +12,13 @@ rename	COMPOSICAO	COMPOSICAO_LEGENDA
 rename	QTD_VOTOS	TOTAL_VOTOS	
 
 * generate variables
-
 gen year = 1996
 gen voto = TOTAL_VOTOS
 
 * keep only mayors candidate
-
 keep if CODIGO_CARGO== 11 // Prefeito
 
 * keep only the winner candidate
-
 gen opa01 = 1 if  SITUACAO1T == "Eleito"
 replace opa01 = 1 if SITUACAO2T == "Eleito"
 keep if opa01 == 1

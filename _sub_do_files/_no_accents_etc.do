@@ -1,76 +1,82 @@
 
 *************************************************
-**** Auxiliary file 1                        ****
+**** Auxiliary file 1                    	    ****
 **** qui replace all accents with normal letters ****
 *************************************************
 
 *** call: variable name
 
-qui replace `1' = subinstr(`1',"Ã£","a",.) // a tilde
-qui replace `1' = subinstr(`1',"Ãƒ","A",.) // a tilde
-qui replace `1' = subinstr(`1',"Ãµ","o",.) // a tilde
-qui replace `1' = subinstr(`1',"Ã•","O",.) // a tilde
-qui replace `1' = subinstr(`1',"Ã§","c",.) // cedille
-qui replace `1' = subinstr(`1',"Ã‡","C",.) // cedille
-
-qui replace `1' = subinstr(`1'," Ã‚"," A",.) // some strange a (capital letter)
-qui replace `1' = subinstr(`1',"Ã‚","a",.) // some strange a (minor letter)
-
-qui replace `1' = subinstr(`1'," Ã„"," A",.) // some strange a (capital letter)
-qui replace `1' = subinstr(`1',"Ã„","a",.) // some strange a (minor letter)
-qui replace `1' = subinstr(`1'," Ã¢"," A",.) // â ¨capital letter)
-qui replace `1' = subinstr(`1',"Ã¢","a",.) // 
-qui replace `1' = subinstr(`1'," Ã€"," A",.) // some strange a (capital letter)
-qui replace `1' = subinstr(`1',"Ã€"," A",.) // some strange a (capital letter)
-qui replace `1' = subinstr(`1'," Ã ","A",.) // â ¨capital letter)
-qui replace `1' = subinstr(`1',"Ã ","a",.) // some strange a (minor letter)
-
-qui replace `1' = subinstr(`1'," Ã"," A",.) // á  (capital letter)
-qui replace `1' = subinstr(`1',"Ã","a",.) // á
-qui replace `1' = subinstr(`1'," Ã¡"," A",.) // á  (capital letter)
-qui replace `1' = subinstr(`1',"Ã¡","a",.) // á
-
-qui replace `1' = subinstr(`1'," Ã­"," I",.) // í  (capital letter)
-qui replace `1' = subinstr(`1',"Ã­","i",.) // í
-qui replace `1' = subinstr(`1'," Ã"," I",.) // ğ˜€¨capital letter)
-qui replace `1' = subinstr(`1',"Ã","i",.) // 
-
-qui replace `1' = subinstr(`1'," Ãº"," U",.) // ú (capital letter)
-qui replace `1' = subinstr(`1',"Ãº","u",.) // ú 
-qui replace `1' = subinstr(`1'," Ãš"," U",.) // (capital letter)
-qui replace `1' = subinstr(`1',"Ãš","u",.) // some strange U
-qui replace `1' = subinstr(`1'," Ã»"," U",.) // ò ¨£apital letter)
-qui replace `1' = subinstr(`1',"Ã»","u",.) // ò Šqui replace `1' = subinstr(`1'," Ãš"," U",.) // (capital letter)
-qui replace `1' = subinstr(`1',"Ã›","u",.) // some strange U
-
-
-qui replace `1' = subinstr(`1'," Ã“"," O",.) // some strange O (capital letter)
-qui replace `1' = subinstr(`1',"Ã“","o",.) // some strange O
-qui replace `1' = subinstr(`1'," Ã³"," O",.) // some strange O (capital letter)
-qui replace `1' = subinstr(`1',"Ã³","o",.) // some strange O
-qui replace `1' = subinstr(`1'," Ã”"," O",.) // some strange O (capital letter)
-qui replace `1' = subinstr(`1',"Ã”","o",.) // some strange O
-qui replace `1' = subinstr(`1'," Ã´"," O",.) // some strange O (capital letter)
-qui replace `1' = subinstr(`1',"Ã´","o",.) // some strange O
-qui replace `1' = subinstr(`1'," Ãµ"," O",.) // some strange O (capital letter)
-qui replace `1' = subinstr(`1',"Ãµ","o",.) // some strange O
-qui replace `1' = subinstr(`1'," Ã´"," O",.) // ğ ¨£apital letter)
-qui replace `1' = subinstr(`1',"Ã´","o",.) // ğ €€
-
-qui replace `1' = subinstr(`1'," ÃŠ"," E",.) // some strange E (capital letter)
-qui replace `1' = subinstr(`1',"ÃŠ","e",.) // some strange E
-qui replace `1' = subinstr(`1'," Ãª"," E",.) // some strange E (capital letter)
-qui replace `1' = subinstr(`1',"Ãª","e",.) // some strange E
-qui replace `1' = subinstr(`1'," Ã‰"," E",.) // some strange E (capital letter)
-qui replace `1' = subinstr(`1',"Ã‰","e",.) // some strange E
-qui replace `1' = subinstr(`1'," Ã©"," E",.) // (capital letter)
-qui replace `1' = subinstr(`1',"Ã©","e",.) // 
-
-qui replace `1' = subinstr(`1'," Ã"," I",.) // some strange I (capital letter)
-qui replace `1' = subinstr(`1',"Ã","i",.) // some strange I
-qui replace `1' = subinstr(`1'," Ã"," I",.) // some strange I (capital letter)
-qui replace `1' = subinstr(`1',"Ã","i",.) // some strange I
-qui replace `1' = subinstr(`1',"Ã®","i",.) // some strange I
+	qui replace `1' = ustrlower(`1')
+	
+	//-------------------//
+	// lower case
+	//-------------------//
+	
+	foreach c in á à â ã ä {
+		qui replace `1' = usubinstr(`1', "`c'", "a", .)
+	}
+	foreach c in é è ê ë {
+		qui replace `1' = usubinstr(`1', "`c'", "e", .)
+	}
+	foreach c in í ì î ï {
+		qui replace `1' = usubinstr(`1', "`c'", "i", .)
+	}
+	foreach c in ó ò ô õ ö {
+		qui replace `1' = usubinstr(`1', "`c'", "o", .)
+	}
+	foreach c in ú ù ü {
+		qui replace `1' = usubinstr(`1', "`c'", "u", .)
+	}
+	*
+	
+	qui replace `1' = usubinstr(`1', "ç", "c", .)
+	qui replace `1' = usubinstr(`1', "ñ", "n", .)
+	
+	//-------------------//
+	// upper case
+	//-------------------//
+	
+	foreach C in Á À Â Ä Ã {
+		qui replace `1' = usubinstr(`1', "`C'", "A", .)
+	}
+	foreach c in É È Ê Ë {
+		qui replace `1' = usubinstr(`1', "`C'", "E", .)
+	}
+	foreach c in Í Ì Î Ï {
+		qui replace `1' = usubinstr(`1', "`C'", "I", .)
+	}
+	foreach c in Ó Ò Ô Õ Ö {
+		qui replace `1' = usubinstr(`1', "`C'", "O", .)
+	}
+	foreach c in Ú Ù Ü {
+		qui replace `1' = usubinstr(`1', "`C'", "U", .)
+	}
+	*
+	
+	qui replace `1' = usubinstr(`1', "Ç", "C", .)
+	qui replace `1' = usubinstr(`1', "Ñ", "N", .)
+	
+	//-------------------//
+	// other characters
+	//-------------------//
+	
+	qui replace `1' = usubinstr(`1', "_", " ", .)
+	qui replace `1' = subinstr(`1', ".", "", .)
+	qui replace `1' = subinstr(`1', ",", "", .)
+	qui replace `1' = subinstr(`1', "  ", " ", .)
+	qui replace `1' = subinstr(`1', "[", "", .)
+	qui replace `1' = subinstr(`1', "]", "", .)
+	qui replace `1' = subinstr(`1', "{", "", .)
+	qui replace `1' = subinstr(`1', "}", "", .)
+	*qui replace `1' = subinstr(`1', "'", "", .)
+	*qui replace `1' = subinstr(`1', "`", "", .)
+	
+	//-------------------//
+	// spacing
+	//-------------------//
+	
+	qui replace `1' = subinstr(`1', "  ", " ", .)
+	qui replace `1' = strtrim(`1')
 
 *** problem: some variables have a blank at the end
 ** solution: remove the blank at the end
@@ -80,8 +86,8 @@ qui replace `1' = rtrim(`1')
 qui replace `1' = subinstr(`1',"  "," ",.)
 
 *** replace wierd characters to single space
-qui replace `1' = subinstr(`1',"'"," ",.) //
-qui replace `1' = subinstr(`1',"^"," ",.) //
+*qui replace `1' = subinstr(`1',"'"," ",.)  
+qui replace `1' = subinstr(`1',"^"," ",.)  
 qui replace `1' = subinstr(`1',"?"," ",.) //
 
 
