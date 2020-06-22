@@ -1,8 +1,8 @@
 # TSE_Codes
 
-##Codes in Stata to extract information from Tribunal Superior Eleitoral (TSE)
+## Codes in Stata to extract information from Tribunal Superior Eleitoral (TSE)
 
-###There are several codes for different purposes. Each main Stata do file is a compilation of many others do files that are stored in the folder "_sub_do_file". The main do files and their purpose are listed below:
+### There are several codes for different purposes. Each main Stata do file is a compilation of many others do files that are stored in the folder "_sub_do_file". The main do files and their purpose are listed below:
 
 * **tse_mayor.do**: extract information regarding the elected mayor  
 
