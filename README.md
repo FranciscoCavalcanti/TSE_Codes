@@ -6,15 +6,15 @@ There are several codes for different purposes. They cover elections from **1996
 
 ## Main codes
 
-* [**tse_mayor.do**](./tse_mayor.do) : extract information regarding the elected mayor  
+* [**tse_mayor.do**](./tse_mayor.do):  extract information regarding the elected mayor  
 
-* [**tse_mayor_characteristics.do**](./tse_mayor_characteristics.do) extract information regarding the charactersitics of the elected mayor 
+* [**tse_mayor_characteristics.do**](./tse_mayor_characteristics.do): extract information regarding the charactersitics of the elected mayor 
 
-* [**tse_mayor_vote_share.do**](./tse_mayor_vote_share.do) extract information regarding the vote share of the elected mayor 
+* [**tse_mayor_vote_share.do**](./tse_mayor_vote_share.do): extract information regarding the vote share of the elected mayor 
 
-* [**tse_president.do**](./tse_president.do) extract information regarding the president
+* [**tse_president.do**](./tse_president.do): extract information regarding the president
 
-* [**donor_firms_master.do**](./donor_firms_master.do) extract information regarding political donor firms
+* [**donor_firms_master.do**](./donor_firms_master.do): extract information regarding political donor firms
 
-* [**tse_candidates_characteristics.do**](./tse_candidates_characteristics.do) extract information regarding the charactersitics of the candidates for mayor 
+* [**tse_candidates_characteristics.do**](./tse_candidates_characteristics.do): extract information regarding the charactersitics of the candidates for mayor 
 
