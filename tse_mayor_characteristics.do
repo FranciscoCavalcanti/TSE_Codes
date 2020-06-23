@@ -1,3 +1,9 @@
+* Francisco Cavalcanti
+* Website: https://sites.google.com/view/franciscocavalcanti/
+* GitHub: https://github.com/FranciscoCavalcanti
+* Twitter: https://twitter.com/Franciscolc85
+* LinkedIn: https://www.linkedin.com/in/francisco-de-lima-cavalcanti-5497b027/
+
 * ------------------------------------------------------------------------
 * The objetive of this do file is to extract information
 * regarding the characteristics of the elected mayors 

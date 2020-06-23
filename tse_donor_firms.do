@@ -1,3 +1,9 @@
+* Francisco Cavalcanti
+* Website: https://sites.google.com/view/franciscocavalcanti/
+* GitHub: https://github.com/FranciscoCavalcanti
+* Twitter: https://twitter.com/Franciscolc85
+* LinkedIn: https://www.linkedin.com/in/francisco-de-lima-cavalcanti-5497b027/
+
 /* -----------------------------------------------------------------------------
     COMPILA DADOS NO NIVEL DE DOADORES DO TSE
 
