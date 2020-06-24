@@ -112,12 +112,12 @@ label variable education_mayor_candidates "average years of schooling for mayora
 * generate dummy for having a high school degree
 gen education_mayor_candidates_HD = 1  if education_mayor_candidates>=12 
 replace education_mayor_candidates_HD = 0  if education_mayor_candidates_HD==. 
-label variable education_mayor_candidates_HD "dummy for mayoral candidate having a high school degree"
+label variable education_mayor_candidates_HD "share of mayoral candidates having a high school degree"
 
 * generate dummy for having a university degree
 gen education_mayor_candidates_UD = 1  if education_mayor_candidates>=17 
 replace education_mayor_candidates_UD = 0  if education_mayor_candidates_UD==. 
-label variable education_mayor_candidates_UD "dummy for mayoral candidate having an university degree"
+label variable education_mayor_candidates_UD "share of mayoral candidates having an university degree"
 
 * generate variable depicting the gender of the mayor
 gen female_mayor_candidates =.

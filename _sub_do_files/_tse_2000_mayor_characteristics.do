@@ -137,6 +137,16 @@ replace education_mayor = 15 if  COD_GRAU_INSTRUCAO==7 		// SUPERIOR INCOMPLETO
 replace education_mayor = 17 if  COD_GRAU_INSTRUCAO==8 		// "SUPERIOR COMPLETO" 
 label variable education_mayor "years of schooling of the mayor"
 
+* generate dummy for having a high school degree
+gen education_mayor_HD = 1  if education_mayor>=12 
+replace education_mayor_HD = 0  if education_mayor_HD==. 
+label variable education_mayor_HD "dummy for mayor having a high school degree"
+
+* generate dummy for having a university degree
+gen education_mayor_UD = 1  if education_mayor>=17 
+replace education_mayor_UD = 0  if education_mayor_UD==. 
+label variable education_mayor_UD "dummy for mayor having an university degree"
+
 * generate variable depicting the gender of the mayor
 gen female_mayor =.
 replace female_mayor = 0 if DESCRICAO_SEXO== "MASCULINO"
@@ -162,5 +172,5 @@ cap rename year year_of_election
 
 * keep only relevant variables
 
-keep	cod_tse year_of_election education_mayor female_mayor age_mayor/*
+keep	cod_tse year_of_election education_mayor education_mayor_HD education_mayor_UD female_mayor age_mayor/*
 	*/	party_winner numero_urna name_of_winner	

@@ -65,6 +65,16 @@ replace education_mayor_candidates = 15 if  DESCRICAO_GRAU_INSTRUCAO=="SUPERIOR 
 replace education_mayor_candidates = 17 if  DESCRICAO_GRAU_INSTRUCAO=="SUPERIOR COMPLETO" 
 label variable education_mayor_candidates "average years of schooling for mayoral candidates"
 
+* generate dummy for having a high school degree
+gen education_mayor_candidates_HD = 1  if education_mayor_candidates>=12 
+replace education_mayor_candidates_HD = 0  if education_mayor_candidates_HD==. 
+label variable education_mayor_candidates_HD "share of mayoral candidates having a high school degree"
+
+* generate dummy for having a university degree
+gen education_mayor_candidates_UD = 1  if education_mayor_candidates>=17 
+replace education_mayor_candidates_UD = 0  if education_mayor_candidates_UD==. 
+label variable education_mayor_candidates_UD "share of mayoral candidates having an university degree"
+
 * generate variable depicting the gender of the mayor
 gen female_mayor_candidates =.
 replace female_mayor_candidates = 0 if DESCRICAO_SEXO== "MASCULINO"
