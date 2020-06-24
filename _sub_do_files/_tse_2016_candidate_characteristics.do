@@ -47,7 +47,7 @@ rename SG_UE cod_tse
 **************************************
 
 // attach label of variables
-local var_mean education_mayor_candidates female_mayor_candidates age_mayor_candidates
+local var_mean education_mayor_candidates education_mayor_candidates_HD education_mayor_candidates_UD female_mayor_candidates age_mayor_candidates
 local var_sum n_mayor_candidates
 
 foreach v of var `var_mean' `var_sum' {

@@ -109,6 +109,16 @@ replace education_mayor_candidates = 15 if  COD_GRAU_INSTRUCAO==7 		// SUPERIOR 
 replace education_mayor_candidates = 17 if  COD_GRAU_INSTRUCAO==8 		// "SUPERIOR COMPLETO" 
 label variable education_mayor_candidates "average years of schooling for mayoral candidates"
 
+* generate dummy for having a high school degree
+gen education_mayor_candidates_HD = 1  if education_mayor_candidates>=12 
+replace education_mayor_candidates_HD = 0  if education_mayor_candidates_HD==. 
+label variable education_mayor_candidates_HD "dummy for mayoral candidate having a high school degree"
+
+* generate dummy for having a university degree
+gen education_mayor_candidates_UD = 1  if education_mayor_candidates>=17 
+replace education_mayor_candidates_UD = 0  if education_mayor_candidates_UD==. 
+label variable education_mayor_candidates_UD "dummy for mayoral candidate having an university degree"
+
 * generate variable depicting the gender of the mayor
 gen female_mayor_candidates =.
 replace female_mayor_candidates = 0 if DESCRICAO_SEXO== "MASCULINO"
@@ -136,7 +146,7 @@ rename SIGLA_UE cod_tse
 **************************************
 
 // attach label of variables
-local var_mean education_mayor_candidates female_mayor_candidates age_mayor_candidates
+local var_mean education_mayor_candidates education_mayor_candidates_HD education_mayor_candidates_UD female_mayor_candidates age_mayor_candidates
 local var_sum n_mayor_candidates
 
 foreach v of var `var_mean' `var_sum' {
