@@ -25,6 +25,7 @@ global dataout  "${ROOT}/6_tse/output"
 global codedir	"${ROOT}/6_tse/code"
 global tmp     "${ROOT}/6_tse/tmp"
 
+* Just an example of "commit"
 
 * extract files .csv by states of Brazil
 
