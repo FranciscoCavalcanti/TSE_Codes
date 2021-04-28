@@ -12,9 +12,10 @@ There are several codes for different purposes. They cover elections from **1996
 
 * [**tse_mayor_vote_share.do**](./tse_mayor_vote_share.do): extract information regarding the vote share of the elected mayor 
 
+* [**tse_mayor_candidates_vote_share.do**](./tse_candidates_characteristics.do): extract information regarding the vote share of the candidates for mayor 
+
 * [**tse_president.do**](./tse_president.do): extract information regarding the president
 
 * [**tse_donor_firms.do**](./tse_donor_firms.do): extract information regarding political donor firms
 
 * [**tse_candidates_characteristics.do**](./tse_candidates_characteristics.do): extract information regarding the charactersitics of the candidates for mayor 
-
