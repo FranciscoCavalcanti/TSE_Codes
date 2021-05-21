@@ -231,6 +231,12 @@ drop iten*
 //in 2011-2013	- PMDB	-	Fernando Bezerra Coelho
 //in 2015-2016	- PP	-	Gilberto Occhi
 //in 2016-2018	- PMDB	-	Helder Barbalho
+//in 2016-2018	- PMDB	-	Rogério Marinho
+
+//Parties the ruled the ministry of regional development (Ministerio do Desenvolvimento Regional)
+//in 2019-2019	- sem partido	-	Gustavo Canuto
+//in 2020-2021	- PSDB	-	Rogério Marinho
+
 
 //During the first 2 years (2017-2018) of the term (1t) 
 
@@ -250,9 +256,13 @@ gen ministry_party_1t = -1 if SIGLA_PARTIDO == "PP"	/*
 
 //During the last 2 years (2019-2020) of the term (2t)
 
-gen president_wing_2t = .
+gen president_wing_2t = -1 if SIGLA_PARTIDO	== "PSL" /*
+	*/	| SIGLA_PARTIDO == "PRTB" /*
+	*/	| SIGLA_PARTIDO	==	"PATRIOTA" /*
+	*/	| SIGLA_PARTIDO	==	"PSC" 
 	
-gen president_party_2t = .
+
+gen president_party_2t = -1 if SIGLA_PARTIDO == "PSL" 
 
 gen ministry_party_2t = .
 
