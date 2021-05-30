@@ -83,8 +83,6 @@ gen voto1 = TOTAL_VOTOS
 
 keep if CODIGO_CARGO== 11 // Prefeito
 
-keep if DESCRICAO_CARGO=="PREFEITO" 
-
 gen keepar = regexm(DESCRICAO_ELEICAO, "ELEICOES 2000") // Keep obs of regular elections
 drop if keepar ~= 1
 drop keepar	
@@ -97,7 +95,7 @@ drop dropar
 
 //Somar os votos de cada candidato em cada Zona
 
-by CODIGO_MUNICIPIO NOME_CANDIDATO NUM_TURNO, sort: egen voto = sum(voto1)
+by CODIGO_MUNICIPIO NOME_CANDIDATO NUM_TURNO, sort: gen voto = sum(voto1)
 drop voto1
 by CODIGO_MUNICIPIO NOME_CANDIDATO NUM_TURNO, sort: drop if _n>1
 
@@ -111,7 +109,7 @@ drop iten*
 
 * generate variable depicting total vote for mayoral candidates
 
-by CODIGO_MUNICIPIO CODIGO_CARGO NUM_TURNO, sort: egen iten01 = total(voto)
+by CODIGO_MUNICIPIO CODIGO_CARGO NUM_TURNO, sort: gen iten01 = voto
 by CODIGO_MUNICIPIO CODIGO_CARGO NUM_TURNO, sort: egen total_vote_mayors_candidate = sum(iten01)
 label variable total_vote_mayors_candidate "total vote for mayoral candidates"
 drop iten*
@@ -145,7 +143,7 @@ do "${codedir}/_no_capital_letters.do" `v'
 ** first I will consider the name of the incumbent mayor
 ** second I will consider the party of the incumbent mayor
 
-gsort  cod_tse  year_of_election numero_urna 
+gsort  cod_tse  numero_urna year_of_election 
 by cod_tse, sort: gen iten01 = voto if year_of_election == 2000 & year_of_election[_n-1] == 1996 & numero_urna[_n] == numero_urna[_n-1] 
 by cod_tse, sort: egen iten02 = mean(iten01) //vote for a party trying reelection
 
