@@ -12,49 +12,49 @@
 	// lower case
 	//-------------------//
 	
-	foreach c in á à â ã ä {
+	foreach c in Ã¡ Ã  Ã¢ Ã£ Ã¤ {
 		qui replace `1' = usubinstr(`1', "`c'", "a", .)
 	}
-	foreach c in é è ê ë {
+	foreach c in Ã© Ã¨ Ãª Ã« {
 		qui replace `1' = usubinstr(`1', "`c'", "e", .)
 	}
-	foreach c in í ì î ï {
+	foreach c in Ã­ Ã¬ Ã® Ã¯ {
 		qui replace `1' = usubinstr(`1', "`c'", "i", .)
 	}
-	foreach c in ó ò ô õ ö {
+	foreach c in Ã³ Ã² Ã´ Ãµ Ã¶ {
 		qui replace `1' = usubinstr(`1', "`c'", "o", .)
 	}
-	foreach c in ú ù ü {
+	foreach c in Ãº Ã¹ Ã¼ {
 		qui replace `1' = usubinstr(`1', "`c'", "u", .)
 	}
 	*
 	
-	qui replace `1' = usubinstr(`1', "ç", "c", .)
-	qui replace `1' = usubinstr(`1', "ñ", "n", .)
+	qui replace `1' = usubinstr(`1', "Ã§", "c", .)
+	qui replace `1' = usubinstr(`1', "Ã±", "n", .)
 	
 	//-------------------//
 	// upper case
 	//-------------------//
 	
-	foreach C in Á À Â Ä Ã {
+	foreach C in Ã Ã€ Ã‚ Ã„ Ãƒ {
 		qui replace `1' = usubinstr(`1', "`C'", "A", .)
 	}
-	foreach c in É È Ê Ë {
+	foreach c in Ã‰ Ãˆ ÃŠ Ã‹ {
 		qui replace `1' = usubinstr(`1', "`C'", "E", .)
 	}
-	foreach c in Í Ì Î Ï {
+	foreach c in Ã ÃŒ Ã Ã {
 		qui replace `1' = usubinstr(`1', "`C'", "I", .)
 	}
-	foreach c in Ó Ò Ô Õ Ö {
+	foreach c in Ã“ Ã’ Ã” Ã• Ã– {
 		qui replace `1' = usubinstr(`1', "`C'", "O", .)
 	}
-	foreach c in Ú Ù Ü {
+	foreach c in Ãš Ã™ Ãœ {
 		qui replace `1' = usubinstr(`1', "`C'", "U", .)
 	}
 	*
 	
-	qui replace `1' = usubinstr(`1', "Ç", "C", .)
-	qui replace `1' = usubinstr(`1', "Ñ", "N", .)
+	qui replace `1' = usubinstr(`1', "Ã‡", "C", .)
+	qui replace `1' = usubinstr(`1', "Ã‘", "N", .)
 	
 	//-------------------//
 	// other characters

@@ -1,74 +1,34 @@
-/*
-
-D0 VOTOCAO_CANDIDATO 2000, 2004, 2008 e 2012
-
-*/
-
-
-rename	v1	DATA_GERACAO
-rename	v2	HORA_GERACAO
-rename	v3	ANO_ELEICAO
-rename	v4	NUM_TURNO
-rename	v5	DESCRICAO_ELEICAO
-rename	v6	SIGLA_UF
-rename	v7	SIGLA_UE
-rename	v8	CODIGO_MUNICIPIO
-rename	v9	NOME_MUNICIPIO
-rename	v10	NUMERO_ZONA
-rename	v11	CODIGO_CARGO
-rename	v12	NUMERO_CAND
-rename	v13	SQ_CANDIDATO
-rename	v14	NOME_CANDIDATO
-rename	v15	NOME_URNA_CANDIDATO
-rename	v16	DESCRICAO_CARGO
-rename	v17	COD_SIT_CAND_SUPERIOR
-rename	v18	DESC_SIT_CAND_SUPERIOR
-rename	v19	CODIGO_SIT_CANDIDATO
-rename	v20	DESC_SIT_CANDIDATO
-rename	v21	CODIGO_SIT_CAND_TOT
-rename	v22	DESC_SIT_CAND_TOT
-rename	v23	NUMERO_PARTIDO
-rename	v24	SIGLA_PARTIDO
-rename	v25	NOME_PARTIDO
-rename	v26	SEQUENCIAL_LEGENDA
-rename	v27	NOME_COLIGACAO
-rename	v28	COMPOSICAO_LEGENDA
-rename	v29	TOTAL_VOTOS
-
-/*
-rename	vol1	DATA_GERACAO	
-rename	vol2	HORA_GERACAO	
-rename	vol3	ANO_ELEICAO	
-rename	vol4	NUM_TURNO	
-rename	vol5	DESCRICAO_ELEICAO	
-rename	vol6	SIGLA_UF	
-rename	vol7	SIGLA_UE	
-rename	vol8	CODIGO_MUNICIPIO	
-rename	vol9	NOME_MUNICIPIO	
-rename	vol10	NUMERO_ZONA	
-rename	vol11	CODIGO_CARGO	
-rename	vol12	NUMERO_CAND	
-rename	vol13	SQ_CANDIDATO	
-rename	vol14	NOME_CANDIDATO	
-rename	vol15	NOME_URNA_CANDIDATO	
-rename	vol16	DESCRICAO_CARGO	
-rename	vol17	COD_SIT_CAND_SUPERIOR	
-rename	vol18	DESC_SIT_CAND_SUPERIOR	
-rename	vol19	CODIGO_SIT_CANDIDATO	
-rename	vol20	DESC_SIT_CANDIDATO	
-rename	vol21	CODIGO_SIT_CAND_TOT	
-rename	vol22	DESC_SIT_CAND_TOT	
-rename	vol23	NUMERO_PARTIDO	
-rename	vol24	SIGLA_PARTIDO	
-rename	vol25	NOME_PARTIDO	
-rename	vol26	SEQUENCIAL_LEGENDA	
-rename	vol27	NOME_COLIGACAO	
-rename	vol28	COMPOSICAO_LEGENDA	
-rename	vol29	TOTAL_VOTOS	
-*/
+rename	 dt_geracao 	DATA_GERACAO
+rename	 hh_geracao 	HORA_GERACAO
+rename	 ano_eleicao 	ANO_ELEICAO
+rename	 nr_turno 	NUM_TURNO
+rename	 ds_eleicao 	DESCRICAO_ELEICAO
+rename	 sg_uf 	SIGLA_UF
+rename	 sg_ue 	SIGLA_UE
+rename	 cd_municipio 	CODIGO_MUNICIPIO
+rename	 nm_municipio 	NOME_MUNICIPIO
+rename	 nr_zona 	NUMERO_ZONA
+rename	 cd_cargo 	CODIGO_CARGO
+rename	 nr_candidato 	NUMERO_CAND
+rename	 sq_candidato 	SQ_CANDIDATO
+rename	 nm_candidato 	NOME_CANDIDATO
+rename	 nm_urna_candidato 	NOME_URNA_CANDIDATO
+rename	 ds_cargo 	DESCRICAO_CARGO
+rename	 cd_situacao_candidatura 	COD_SIT_CAND_SUPERIOR
+rename	 ds_situacao_candidatura 	DESC_SIT_CAND_SUPERIOR
+rename	 cd_detalhe_situacao_cand 	CODIGO_SIT_CANDIDATO
+rename	 ds_detalhe_situacao_cand 	DESC_SIT_CANDIDATO
+rename	 cd_sit_tot_turno 	CODIGO_SIT_CAND_TOT
+rename	 ds_sit_tot_turno 	DESC_SIT_CAND_TOT
+rename	 nr_partido 	NUMERO_PARTIDO
+rename	 sg_partido 	SIGLA_PARTIDO
+rename	 nm_partido 	NOME_PARTIDO
+rename	 sq_coligacao 	SEQUENCIAL_LEGENDA
+rename	 nm_coligacao 	NOME_COLIGACAO
+rename	 ds_composicao_coligacao 	COMPOSICAO_LEGENDA
+rename	 qt_votos_nominais 	TOTAL_VOTOS
 
 * clean data
-
 gen teste = 1 if   DESC_SIT_CANDIDATO=="DEFERIDO"
 replace teste =1 if   DESC_SIT_CANDIDATO=="DEFERIDO COM RECURSO"
 replace teste =1 if   DESC_SIT_CANDIDATO=="SUB JUDICE"
@@ -80,12 +40,9 @@ gen year = ANO_ELEICAO
 gen voto1 = TOTAL_VOTOS
 
 * keep only mayors
-
 keep if CODIGO_CARGO== 11 // Prefeito
 
-keep if DESCRICAO_CARGO=="PREFEITO" 
-
-gen keepar = regexm(DESCRICAO_ELEICAO, "ELEIÇÕES MUNICIPAIS 2016") // Keep obs of regular elections
+gen keepar = regexm(DESCRICAO_ELEICAO, "ELEIÇÕES MUNICIPAIS 2020") // Keep obs of regular elections
 drop if keepar ~= 1
 drop keepar	
 
@@ -102,12 +59,40 @@ drop voto1
 by CODIGO_MUNICIPIO NOME_CANDIDATO NUM_TURNO, sort: drop if _n>1
 
 //who is elected?
-
 gen elected = 1 if  DESC_SIT_CAND_TOT== "ELEITO"
 replace elected =1 if DESC_SIT_CAND_TOT == "ELEITO POR QUOCIENTE PARTIDÁRIO" 
+replace elected =1 if DESC_SIT_CAND_TOT == "ELEITO POR MÉDIA" 
+replace elected =1 if DESC_SIT_CAND_TOT == "ELEITO POR QP" 
 by CODIGO_MUNICIPIO CODIGO_CARGO NOME_CANDIDATO, sort: egen iten1= mean(elected)
 by CODIGO_MUNICIPIO CODIGO_CARGO NOME_CANDIDATO, sort: replace elected = iten1 if iten1 ==1
 drop iten*
+
+* generate variable depicting the winner party in the mayoral election
+
+gen opa01 = 1 if  elected == 1
+gen opa02 =  SIGLA_PARTIDO	if	opa01	==	1
+by CODIGO_MUNICIPIO, sort: egen party_winner = mode(opa02), maxmode
+tostring party_winner, replace
+label variable party_winner "winner party in mayoral election"
+drop opa*
+
+* generate variable depicting the number of winner candidate in the mayoral elections
+
+gen opa01 = 1 if  elected == 1
+gen opa02 =  NUMERO_CAND	if	opa01	==	1
+by CODIGO_MUNICIPIO, sort: egen numero_urna = mode(opa02), maxmode
+tostring numero_urna, replace
+label variable numero_urna "number of winner in the ballot"
+drop opa*
+
+* generate variable depicting the name of winner candidate in the mayoral elections
+
+gen opa01 = 1 if  elected == 1
+gen opa02 =  NOME_CANDIDATO	if	opa01	==	1
+by CODIGO_MUNICIPIO, sort: egen name_of_winner = mode(opa02), maxmode
+tostring name_of_winner, replace
+label variable name_of_winner "name of winner in mayoral election"
+drop opa*
 
 * generate variable depicting total vote for mayoral candidates
 
@@ -124,7 +109,7 @@ gen year_of_election = year
 
 //append data from previous elections in order to define the incumbent candidates
 
-append using "$tmp/tse_mayor_winners_2012.dta"
+append using "$tmp/tse_mayor_winners_2016.dta"
 
 //edit data
 
@@ -146,11 +131,11 @@ do "${codedir}/_no_capital_letters.do" `v'
 ** second I will consider the party of the incumbent mayor
 
 gsort  cod_tse  year_of_election numero_urna 
-by cod_tse, sort: gen iten01 = voto if year_of_election == 2016 & year_of_election[_n-1] == 2012 & numero_urna[_n] == numero_urna[_n-1] 
+by cod_tse, sort: gen iten01 = voto if year_of_election == 2020 & year_of_election[_n-1] == 2016 & numero_urna[_n] == numero_urna[_n-1] 
 by cod_tse, sort: egen iten02 = mean(iten01) //vote for a party trying reelection
 
 gsort  cod_tse  year_of_election name_of_winner 
-by cod_tse, sort: gen iten03 = voto if year_of_election == 2016 & year_of_election[_n-1] == 2012 & name_of_winner[_n] == name_of_winner[_n-1] 
+by cod_tse, sort: gen iten03 = voto if year_of_election == 2020 & year_of_election[_n-1] == 2016 & name_of_winner[_n] == name_of_winner[_n-1] 
 by cod_tse, sort: egen iten04 = mean(iten03) //vote for a mayor trying reelection
 
 gen iten05 = iten04 // first consider the name of the candidate
@@ -163,7 +148,7 @@ drop iten*
 
 * clean data
 
-keep if year_of_election == 2016
+keep if year_of_election == 2020
 
 by CODIGO_MUNICIPIO, sort: drop if _n>1
 
@@ -174,4 +159,4 @@ keep	cod_tse year_of_election /*
 	
 * save as temporary file
 
-save "$tmp/tse_mayor_vote_share_2016.dta", replace	
+save "$tmp/tse_mayor_vote_share_2020.dta", replace	

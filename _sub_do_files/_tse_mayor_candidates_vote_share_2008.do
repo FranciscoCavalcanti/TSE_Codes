@@ -79,7 +79,7 @@ by CODIGO_MUNICIPIO CODIGO_CARGO NOME_CANDIDATO, sort: replace elected = iten1 i
 drop iten*
 
 * generate variable depicting total vote for mayoral candidates
-by CODIGO_MUNICIPIO CODIGO_CARGO NUM_TURNO, sort: egen iten01 = total(voto)
+by CODIGO_MUNICIPIO CODIGO_CARGO NUM_TURNO, sort: gen iten01 = voto
 by CODIGO_MUNICIPIO CODIGO_CARGO NUM_TURNO, sort: egen total_vote_mayors_candidate = sum(iten01)
 label variable total_vote_mayors_candidate "total vote for mayoral candidates"
 drop iten*
